@@ -185,13 +185,48 @@ def mergeTwoLists(list1, list2):
     else:
         return ListNode(list2.val, mergeTwoLists(list1, list2.next))
 
+def removeDuplicates(nums):
+    """
+    :type nums: List[int]
+    :rtype: int
+    """
+    l = 1
 
-l1_p2 = ListNode(4)
-l1_p1 = ListNode(2, l1_p2)
-l1 = ListNode(1, l1_p1)
-l2_p2 = ListNode(4)
-l2_p1 = ListNode(3, l2_p2)
-l2 = ListNode(1, l2_p1)
+    for r in range(1, len(nums)):
+        if nums[r] != nums[r - 1]:
+            nums[l] = nums[r]
+            l += 1
+    return l
 
-ans = mergeTwoLists(l1, l2)
-read(ans)
+def removeElement(nums, val):
+    """
+    :type nums: List[int]
+    :type val: int
+    :rtype: int
+    """
+    i = 0
+    while i < len(nums):
+        if nums[i] == val:
+            nums.pop(i)
+            i -= 1
+        i += 1
+    return len(nums)
+
+
+def searchInsert(nums, target):
+    """
+    :type nums: List[int]
+    :type target: int
+    :rtype: int
+    """
+    # linear insertion
+    for i in range(len(nums)):
+        if target <= nums[i]:
+            return i
+    return len(nums)
+
+
+nums = [1,3,5,6]
+target = 7
+ans = searchInsert(nums, target)
+print(ans)
