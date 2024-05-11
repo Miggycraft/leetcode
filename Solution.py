@@ -161,6 +161,7 @@ def addTwoNumbers(l1, l2):
 
     return dummy.next
 
+
 def read(l1):
     if l1.next:
         read(l1.next)
@@ -185,6 +186,7 @@ def mergeTwoLists(list1, list2):
     else:
         return ListNode(list2.val, mergeTwoLists(list1, list2.next))
 
+
 def removeDuplicates(nums):
     """
     :type nums: List[int]
@@ -197,6 +199,7 @@ def removeDuplicates(nums):
             nums[l] = nums[r]
             l += 1
     return l
+
 
 def removeElement(nums, val):
     """
@@ -226,7 +229,34 @@ def searchInsert(nums, target):
     return len(nums)
 
 
-nums = [1,3,5,6]
-target = 7
-ans = searchInsert(nums, target)
-print(ans)
+def countAndSay(n):
+    """
+    :type n: int
+    :rtype: str
+    """
+    if n == 1:
+        return "1"
+    else:
+        return countAndSayHelper(countAndSay(n-1))
+
+def countAndSayHelper(s):
+    output = ""
+    ptr = s[0]
+    count = 0
+    for i in s:
+        if ptr == i:
+            # keep up
+            count += 1
+        else:
+            # new pointer
+            output += str(count) + ptr
+            count = 1
+            ptr = i
+    output += str(count) + ptr
+    return output
+
+
+
+n = 5
+ans = countAndSay(n)
+print('PRINT:', ans)
