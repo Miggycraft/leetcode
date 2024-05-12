@@ -17,3 +17,9 @@
 
 ## 5/11/24
 + 38\. Count and Say
+
+## 5/12/24
++ 387\. First Unique Character in a String
++ 169\. Majority Element
++ 58\. Length of Last Word
++ 1137\. N-th Tribonacci Number

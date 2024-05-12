@@ -237,7 +237,8 @@ def countAndSay(n):
     if n == 1:
         return "1"
     else:
-        return countAndSayHelper(countAndSay(n-1))
+        return countAndSayHelper(countAndSay(n - 1))
+
 
 def countAndSayHelper(s):
     output = ""
@@ -256,7 +257,79 @@ def countAndSayHelper(s):
     return output
 
 
+def firstUniqChar(s):
+    """
+    :type s: str
+    :rtype: int
+    """
+    u = {}
+    for i in range(len(s)):
+        if u.__contains__(s[i]):
+            u[s[i]] = -1
+        else:
+            u[s[i]] = i
+    for i in u.values():
+        if i != -1:
+            return i
+    return -1
 
-n = 5
-ans = countAndSay(n)
+
+def majorityElement(nums):
+    """
+    :type nums: List[int]
+    :rtype: int
+    """
+    map = {}
+    for n in nums:
+        if map.__contains__(n):
+            map[n] += 1
+        else:
+            map[n] = 1
+    map = {k: v for k, v in sorted(map.items(), key=lambda item: item[1])}
+    return list(map.keys())[len(map) - 1]
+
+
+def lengthOfLastWord(s):
+    """
+    :type s: str
+    :rtype: int
+    """
+    m = list(filter(None, s.split(' ')))
+    return len(m[len(m)-1])
+
+
+def tribonacci_old(n):
+    """
+    :type n: int
+    :rtype: int
+    found something better
+    """
+    t = [0,1,1]
+    p = 2
+    for i in range(n-2):
+        t.append(t[p] + t[p-1] + t[p-2])
+        p += 1
+    return t[n]
+
+
+def tribonacci(n):
+    """
+    :type n: int
+    :rtype: int
+    """
+    t = [0, 1, 1]
+    # lol
+    if n == 0:
+        return 0
+    if n == 1 or n == 2:
+        return 1
+    for i in range(n - 3):
+        temp = t[0] + t[1] + t[2]
+        t[0] = t[1]
+        t[1] = t[2]
+        t[2] = temp
+    return t[0] + t[1] + t[2]
+
+n = 0
+ans = tribonacci(n)
 print('PRINT:', ans)
