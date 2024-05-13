@@ -1,18 +1,9 @@
-s = "1211"
-output = ""
-ptr = s[0]
-count = 0
-for i in s:
-    if ptr == i:
-        #keep up
-        count += 1
-    else:
-        # new pointer
-        output += str(count) + ptr
-        count = 1
-        ptr = i
-output += str(count) + ptr
-#     # x[i] = x[i] + 1 if i in x else 1
-# for j in x:
-#     output += str(x[j])+j
-print(output)
+d = {
+    1 : ['a', 'b'],
+    2 : ['c', 'd']
+}
+
+print(''.join(i for j in list(d.values()) for i in j))
+print(list(d.values()))
+# print(map({print('test')},*d.values()))
+# print(''.join(*d.values()))

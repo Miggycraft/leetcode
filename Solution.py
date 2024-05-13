@@ -330,6 +330,62 @@ def tribonacci(n):
         t[2] = temp
     return t[0] + t[1] + t[2]
 
-n = 0
-ans = tribonacci(n)
+# def longestPalindrome(s):
+#     """
+#     :type s: str
+#     :rtype: str
+#     """
+#     #FAILED TRY AGAIN NEXT TIME >:(
+#     l = 0
+#     r = len(s) - 1
+#     while l < r:
+#         print(s[l:r + 1])
+#         movR = False
+#         if s[l] == s[r]:
+#             # equal letter, test palindrome
+#             if s[l:r + 1][::-1] == s[l:r+1]:
+#                 return s[l:r+1]
+#         for i in range(r):
+#             if s[l] == s[r-i]:
+#                 if s[l:r + 1][::-1] == s[l:r + 1]:
+#                     return s[l:r + 1]
+#                 movR = True
+#             elif s[l+i] == s[r]:
+#                 if s[l:r + 1][::-1] == s[l:r + 1]:
+#                     return s[l:r + 1]
+#         if movR:
+#             r -= 1
+#         else:
+#             l += 1
+#     return s[0]
+
+def convert(s, numRows):
+    """
+    :type s: str
+    :type numRows: int
+    :rtype: str
+    """
+    s_d = {}
+    count = 0
+    backward = False
+    while len(s) > 0:
+        if count == numRows-1:
+            backward = True
+        elif count == 0:
+            backward = False
+        if s_d.__contains__(count):
+            s_d[count] += s[0]
+        else:
+            s_d[count] = [s[0]]
+        s = s[1:]
+        if backward:
+            count -= 1
+        else:
+            count += 1
+    return ''.join(i for j in list(s_d.values()) for i in j)
+
+
+s = "IMGONNA...IMGONA...LEEEEEET"
+numRows = 3
+ans = convert(s, numRows)
 print('PRINT:', ans)

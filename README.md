@@ -23,3 +23,7 @@
 + 169\. Majority Element
 + 58\. Length of Last Word
 + 1137\. N-th Tribonacci Number
+
+## 5/13/24
++ 5\. Longest Palindromic Substring [FAILED] {might retry next time}
++ 
