@@ -5,55 +5,43 @@ class ListNode(object):
 
 
 def isPalindrome(x):
-    """
-    :type x: int
-    :rtype: bool
-    """
     x = str(x)
     return x == x[::-1]
 
 
-def romanToInt(s):
-    """
-    :type s: str
-    :rtype: int
-    """
-    output = 0
-    roman = {
-        "I": 1,
-        "V": 5,
-        "X": 10,
-        "L": 50,
-        "C": 100,
-        "D": 500,
-        "M": 1000
-    }
-
-    for i in range(len(s) - 1):
-        temp = romanToIntHelper(s[i], s[i + 1])
-        if temp == 0:
-            output += roman[s[i]]
-        else:
-            output += temp
-    output += roman[s[-1]]
-    return output
-
-
-def romanToIntHelper(s1, s2):
-    if s1 == 'I' and (s2 == 'V' or s2 == 'X'):
-        return -1
-    elif s1 == 'X' and (s2 == 'L' or s2 == 'C'):
-        return -10
-    elif s1 == 'C' and (s2 == 'D' or s2 == 'M'):
-        return -100
-    return 0
+# def romanToInt(s): NOT WORK
+#     output = 0
+#     roman = {
+#         "I": 1,
+#         "V": 5,
+#         "X": 10,
+#         "L": 50,
+#         "C": 100,
+#         "D": 500,
+#         "M": 1000
+#     }
+#
+#     for i in range(len(s) - 1):
+#         temp = romanToIntHelper(s[i], s[i + 1])
+#         if temp == 0:
+#             output += roman[s[i]]
+#         else:
+#             output += temp
+#     output += roman[s[-1]]
+#     return output
+#
+#
+# def romanToIntHelper(s1, s2):
+#     if s1 == 'I' and (s2 == 'V' or s2 == 'X'):
+#         return -1
+#     elif s1 == 'X' and (s2 == 'L' or s2 == 'C'):
+#         return -10
+#     elif s1 == 'C' and (s2 == 'D' or s2 == 'M'):
+#         return -100
+#     return 0
 
 
 def longestCommonPrefix(strs):
-    """
-    :type strs: List[str]
-    :rtype: str
-    """
     strs = sorted(strs, key=len)
     prefix = strs[0]
     for s in strs:
@@ -65,10 +53,6 @@ def longestCommonPrefix(strs):
 
 
 def isValid(s):
-    """
-    :type s: str
-    :rtype: bool
-    """
     stack = []
     pushers = ['{', '(', '[']
     for l in s:
@@ -88,11 +72,6 @@ def isValid(s):
 
 
 def strStr(haystack, needle):
-    """
-    :type haystack: str
-    :type needle: str
-    :rtype: int
-    """
     if not haystack.__contains__(needle):
         return -1
     for i in range(len(haystack) - len(needle) + 1):
@@ -102,13 +81,6 @@ def strStr(haystack, needle):
 
 
 def addTwoNumbers_old(l1, l2):
-    """
-    :type l1: ListNode
-    :type l2: ListNode
-    :rtype: ListNode
-
-    note: works but not using ListNode
-    """
     output = []
     carry = False
     if len(l2) > len(l1):
@@ -137,11 +109,6 @@ def addTwoNumbers_old(l1, l2):
 
 
 def addTwoNumbers(l1, l2):
-    """
-    :type l1: ListNode
-    :type l2: ListNode
-    :rtype: ListNode
-    """
     dummy = ListNode()
     cur = dummy
 
@@ -169,11 +136,6 @@ def read(l1):
 
 
 def mergeTwoLists(list1, list2):
-    """
-    :type list1: Optional[ListNode]
-    :type list2: Optional[ListNode]
-    :rtype: Optional[ListNode]
-    """
     if not list1 and list2:
         return ListNode(list2.val, list2.next)
     elif not list2 and list1:
@@ -188,10 +150,6 @@ def mergeTwoLists(list1, list2):
 
 
 def removeDuplicates(nums):
-    """
-    :type nums: List[int]
-    :rtype: int
-    """
     l = 1
 
     for r in range(1, len(nums)):
@@ -202,11 +160,6 @@ def removeDuplicates(nums):
 
 
 def removeElement(nums, val):
-    """
-    :type nums: List[int]
-    :type val: int
-    :rtype: int
-    """
     i = 0
     while i < len(nums):
         if nums[i] == val:
@@ -217,11 +170,6 @@ def removeElement(nums, val):
 
 
 def searchInsert(nums, target):
-    """
-    :type nums: List[int]
-    :type target: int
-    :rtype: int
-    """
     # linear insertion
     for i in range(len(nums)):
         if target <= nums[i]:
@@ -230,10 +178,6 @@ def searchInsert(nums, target):
 
 
 def countAndSay(n):
-    """
-    :type n: int
-    :rtype: str
-    """
     if n == 1:
         return "1"
     else:
@@ -258,10 +202,6 @@ def countAndSayHelper(s):
 
 
 def firstUniqChar(s):
-    """
-    :type s: str
-    :rtype: int
-    """
     u = {}
     for i in range(len(s)):
         if u.__contains__(s[i]):
@@ -275,10 +215,6 @@ def firstUniqChar(s):
 
 
 def majorityElement(nums):
-    """
-    :type nums: List[int]
-    :rtype: int
-    """
     map = {}
     for n in nums:
         if map.__contains__(n):
@@ -290,20 +226,11 @@ def majorityElement(nums):
 
 
 def lengthOfLastWord(s):
-    """
-    :type s: str
-    :rtype: int
-    """
     m = list(filter(None, s.split(' ')))
     return len(m[len(m)-1])
 
 
 def tribonacci_old(n):
-    """
-    :type n: int
-    :rtype: int
-    found something better
-    """
     t = [0,1,1]
     p = 2
     for i in range(n-2):
@@ -313,10 +240,6 @@ def tribonacci_old(n):
 
 
 def tribonacci(n):
-    """
-    :type n: int
-    :rtype: int
-    """
     t = [0, 1, 1]
     # lol
     if n == 0:
@@ -360,11 +283,6 @@ def tribonacci(n):
 #     return s[0]
 
 def convert(s, numRows):
-    """
-    :type s: str
-    :type numRows: int
-    :rtype: str
-    """
     s_d = {}
     count = 0
     backward = False
@@ -384,8 +302,55 @@ def convert(s, numRows):
             count += 1
     return ''.join(i for j in list(s_d.values()) for i in j)
 
+def plusOne(digits):
+    flag = True
+    last = len(digits)-1
+    while flag:
+        if last == -1:
+            digits.insert(0,1)
+            break
 
-s = "IMGONNA...IMGONA...LEEEEEET"
-numRows = 3
-ans = convert(s, numRows)
+        if digits[last] + 1 == 10:
+            digits[last] = 0
+            last -= 1
+        else:
+            digits[last] += 1
+            flag = False
+
+    return digits
+
+def addBinary(a, b):
+    if a == '0' and b == '0':
+        return '0'
+
+    output = ''
+    a = int(a)
+    b = int(b)
+    c = 0
+    while a > 0 or b > 0 or c > 0:
+        s_a = a % 10
+        s_b = b % 10
+        sum = s_a + s_b + c
+        if sum == 3:
+            #one and carry
+            output += '1'
+            c = 1
+        elif sum == 2:
+            #zero and carry
+            output += '0'
+            c = 1
+        elif sum == 1:
+            #one
+            output += '1'
+            c = 0
+        else:
+            #zero
+            output += '0'
+            c = 0
+
+        a //= 10
+        b //= 10
+    return output[::-1]
+
+
 print('PRINT:', ans)

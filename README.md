@@ -27,3 +27,8 @@
 ## 5/13/24
 + 5\. Longest Palindromic Substring [FAILED] {might retry next time}
 + 6\. ZigZag Conversion
+
+## 5/15/24
++ 66\. Plus One
++ 67\. Add Binary
++ 
