@@ -353,4 +353,29 @@ def addBinary(a, b):
     return output[::-1]
 
 
+def findMedianSortedArrays(nums1, nums2):
+    #this is not log(m+n)...
+    nums = nums1 + nums2
+    nums = sorted(nums)
+    mid = len(nums) // 2
+    if len(nums) % 2 == 1:
+        #center
+        return nums[mid]
+    else:
+        #no center
+        return float(nums[mid-1] + nums[mid]) / 2
+
+def lengthOfLongestSubstring(s):
+    uniq = []
+    max = 0
+    for l in s:
+        max = max if len(uniq) < max else len(uniq)
+        while l in uniq:
+            uniq.pop(0)
+        uniq.append(l)
+    max = max if len(uniq) < max else len(uniq)
+    return max
+
+s = " "
+ans = lengthOfLongestSubstring(s)
 print('PRINT:', ans)

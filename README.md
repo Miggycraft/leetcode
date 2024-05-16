@@ -25,10 +25,13 @@
 + 1137\. N-th Tribonacci Number
 
 ## 5/13/24
-+ 5\. Longest Palindromic Substring [FAILED] {might retry next time}
++ 5\. ~~Longest Palindromic Substring~~ [Mali]
 + 6\. ZigZag Conversion
 
 ## 5/15/24
 + 66\. Plus One
 + 67\. Add Binary
-+ 
+
+## 5/16/24
++ 4\. ~~Median of Two Sorted Arrays~~ [Not Following]
++ 3\. Longest Substring Without Repeating Characters
