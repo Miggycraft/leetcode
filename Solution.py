@@ -1,3 +1,6 @@
+import math
+
+
 class ListNode(object):
     def __init__(self, val=0, next=None):
         self.val = val
@@ -227,14 +230,14 @@ def majorityElement(nums):
 
 def lengthOfLastWord(s):
     m = list(filter(None, s.split(' ')))
-    return len(m[len(m)-1])
+    return len(m[len(m) - 1])
 
 
 def tribonacci_old(n):
-    t = [0,1,1]
+    t = [0, 1, 1]
     p = 2
-    for i in range(n-2):
-        t.append(t[p] + t[p-1] + t[p-2])
+    for i in range(n - 2):
+        t.append(t[p] + t[p - 1] + t[p - 2])
         p += 1
     return t[n]
 
@@ -252,6 +255,7 @@ def tribonacci(n):
         t[1] = t[2]
         t[2] = temp
     return t[0] + t[1] + t[2]
+
 
 # def longestPalindrome(s):
 #     """
@@ -287,7 +291,7 @@ def convert(s, numRows):
     count = 0
     backward = False
     while len(s) > 0:
-        if count == numRows-1:
+        if count == numRows - 1:
             backward = True
         elif count == 0:
             backward = False
@@ -302,12 +306,13 @@ def convert(s, numRows):
             count += 1
     return ''.join(i for j in list(s_d.values()) for i in j)
 
+
 def plusOne(digits):
     flag = True
-    last = len(digits)-1
+    last = len(digits) - 1
     while flag:
         if last == -1:
-            digits.insert(0,1)
+            digits.insert(0, 1)
             break
 
         if digits[last] + 1 == 10:
@@ -318,6 +323,7 @@ def plusOne(digits):
             flag = False
 
     return digits
+
 
 def addBinary(a, b):
     if a == '0' and b == '0':
@@ -332,19 +338,19 @@ def addBinary(a, b):
         s_b = b % 10
         sum = s_a + s_b + c
         if sum == 3:
-            #one and carry
+            # one and carry
             output += '1'
             c = 1
         elif sum == 2:
-            #zero and carry
+            # zero and carry
             output += '0'
             c = 1
         elif sum == 1:
-            #one
+            # one
             output += '1'
             c = 0
         else:
-            #zero
+            # zero
             output += '0'
             c = 0
 
@@ -354,16 +360,17 @@ def addBinary(a, b):
 
 
 def findMedianSortedArrays(nums1, nums2):
-    #this is not log(m+n)...
+    # this is not log(m+n)...
     nums = nums1 + nums2
     nums = sorted(nums)
     mid = len(nums) // 2
     if len(nums) % 2 == 1:
-        #center
+        # center
         return nums[mid]
     else:
-        #no center
-        return float(nums[mid-1] + nums[mid]) / 2
+        # no center
+        return float(nums[mid - 1] + nums[mid]) / 2
+
 
 def lengthOfLongestSubstring(s):
     uniq = []
@@ -376,6 +383,57 @@ def lengthOfLongestSubstring(s):
     max = max if len(uniq) < max else len(uniq)
     return max
 
-s = " "
-ans = lengthOfLongestSubstring(s)
+
+def reverse(x):
+    #negative num
+    n = x < 0
+    x = abs(x)
+    o = 0
+    mult = 10 ** (len(str(x)) - 1)
+    while x > 0:
+        i = x % 10
+        o += i * mult
+        x //= 10
+        mult //= 10
+    if o > 2147483647:
+        return 0
+    return -o if n else o
+
+def reverse_alt(x):
+    n = x < 0
+    x = str(x)
+    if n:
+        #negative
+        x = x[1:]
+    x = x[::-1]
+    o = int(x)
+    if o > 2147483647:
+        return 0
+    return -o if n else o
+
+def myAtoi(s):
+    flag = False
+    n = False
+    o = ''
+    for i in s.strip():
+        if (i == '-' or i == '+') and not flag:
+            if i == '-':
+                n = True
+            flag = True
+        elif i.isnumeric():
+            o += i
+            flag = True
+        else:
+            break
+    if len(o) == 0:
+        return 0
+    o = -int(o) if n else int(o)
+    if o < -2147483648:
+        o = -2147483648
+    elif o > 2147483647:
+        o = 2147483647
+    return o
+
+s = -42
+ans = reverse_alt(s)
 print('PRINT:', ans)

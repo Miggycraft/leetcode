@@ -35,3 +35,7 @@
 ## 5/16/24
 + 4\. ~~Median of Two Sorted Arrays~~ [Not Following]
 + 3\. Longest Substring Without Repeating Characters
+
+## 5/17/24
++ 7\. Reverse Integer
++ 8\. String to Integer (atoi)
