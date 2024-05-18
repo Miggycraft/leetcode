@@ -133,9 +133,9 @@ def addTwoNumbers(l1, l2):
 
 
 def read(l1):
+    print(l1.val)
     if l1.next:
         read(l1.next)
-    print(l1.val)
 
 
 def mergeTwoLists(list1, list2):
@@ -434,6 +434,59 @@ def myAtoi(s):
         o = 2147483647
     return o
 
-s = -42
-ans = reverse_alt(s)
+
+def letterCombinations(digits):
+    if not digits:
+        return []
+    dict = {
+        '2': ['a', 'b', 'c'],
+        '3': ['d', 'e', 'f'],
+        '4': ['g', 'h', 'i'],
+        '5': ['j', 'k', 'l'],
+        '6': ['m', 'n', 'o'],
+        '7': ['p', 'q', 'r', 's'],
+        '8': ['t', 'u', 'v'],
+        '9': ['w', 'x', 'y', 'z'],
+    }
+    output = dict[digits[0]]
+    for d in digits[1:]:
+        temp = []
+        o_count = len(output)
+        for i in range(o_count):
+            for j in range(len(dict[d])):
+                temp.append(str(output[i]+dict[d][j]))
+        output = temp
+    return output
+
+
+def removeNthFromEnd(head, n):
+    if not head.next:
+        return None
+
+    count = 0
+    curr = 0
+    o = head
+    c_head = o
+    c_prev = o
+    while c_head:
+        count += 1
+        c_head = c_head.next
+    c_head = o
+    if count - n == 0:
+        return head.next
+    while curr != (count - n):
+        c_prev = c_head
+        c_head = c_head.next
+        curr += 1
+    c_prev.next = c_head.next
+    return o
+
+
+p5 = ListNode(5)
+p4 = ListNode(4, p5)
+p3 = ListNode(3, p4)
+p2 = ListNode(2, p3)
+p1 = ListNode(1, p2)
+n = 5
+ans = removeNthFromEnd(p1, n)
 print('PRINT:', ans)

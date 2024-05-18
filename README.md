@@ -39,3 +39,7 @@
 ## 5/17/24
 + 7\. Reverse Integer
 + 8\. String to Integer (atoi)
+
+## 5/18/24
++ 17\. Letter Combinations of a Phone Number
++ 19\. Remove Nth Node From End of List
