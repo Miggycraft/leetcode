@@ -43,3 +43,12 @@
 ## 5/18/24
 + 17\. Letter Combinations of a Phone Number
 + 19\. Remove Nth Node From End of List
+
+## 6/16/26
+- 1768. Merge Strings Alternately
+
+## 6/17/26
+- 1431. Kids With the Greatest Number of Candies
+- 605. Can Place Flowers
+- 345. Reverse Vowels of a String
+- 151. Reverse Words in a String

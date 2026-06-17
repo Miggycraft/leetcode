@@ -481,12 +481,86 @@ def removeNthFromEnd(head, n):
     c_prev.next = c_head.next
     return o
 
+def mergeAlternately(self, word1, word2):
+    """
+    :type word1: str
+    :type word2: str
+    :rtype: str
+    """
+    min_word = min(len(word1), len(word2))
+    output = ""
+    for i in range(min_word):
+        output += word1[i] +  word2[i]
+    output += word1[min_word:]
+    output += word2[min_word:]
+    return output
 
-p5 = ListNode(5)
-p4 = ListNode(4, p5)
-p3 = ListNode(3, p4)
-p2 = ListNode(2, p3)
-p1 = ListNode(1, p2)
-n = 5
-ans = removeNthFromEnd(p1, n)
-print('PRINT:', ans)
+def kidsWithCandies(self, candies, extraCandies):
+    """
+    :type candies: List[int]
+    :type extraCandies: int
+    :rtype: List[bool]
+    """
+    output = []
+    cur_max = max(candies)
+    for candy in candies:
+        output.append(candy + extraCandies >= cur_max)
+    return output
+
+def canPlaceFlowers(self, flowerbed, n):
+    """
+    :type flowerbed: List[int]
+    :type n: int
+    :rtype: bool
+    """
+    if n == 0:
+        return True
+    max_flow = 0
+    i = 0
+    if len(flowerbed) == 1:
+        return flowerbed[0] == 0
+    while (i < len(flowerbed)):
+        if flowerbed[i] == 1:
+            i += 1
+        elif i == 0 and flowerbed[i+1] != 1:
+            max_flow += 1
+            i += 1
+        elif i == len(flowerbed)-1:
+            max_flow += 1
+            i += 1
+        elif (flowerbed[i+1] != 1 and flowerbed[i-1] !=1):
+            max_flow += 1
+            i += 1
+        i += 1
+        
+    return n <= max_flow
+
+def reverseVowels(self, s):
+    """
+    :type s: str
+    :rtype: str
+    """
+    s = list(s)
+    vowels = ['a', 'e', 'i', 'o', 'u']
+    l_p = 0
+    r_p = len(s)-1
+    while l_p <= r_p:
+        if s[l_p].lower() in vowels:
+            if s[r_p].lower() in vowels:
+                temp = s[l_p]
+                s[l_p] = s[r_p]
+                s[r_p] = temp
+                l_p += 1
+                r_p -= 1
+            else:
+                r_p -= 1
+        else:
+            l_p += 1 
+    return "".join(s)
+
+def reverseWords(self, s):
+    """
+    :type s: str
+    :rtype: str
+    """
+    return " ".join(s.split()[::-1])
