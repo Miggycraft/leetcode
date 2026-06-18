@@ -614,18 +614,49 @@ def moveZeroes(self, nums):
         else:
             r_p += 1
 
-    def isSubsequence(self, s, t):
-        """
-        :type s: str
-        :type t: str
-        :rtype: bool
-        """
-        if not s:
+def isSubsequence(self, s, t):
+    """
+    :type s: str
+    :type t: str
+    :rtype: bool
+    """
+    if not s:
+        return True
+    a = list(s)
+    for i in t:
+        if i == a[0]:
+            a.pop(0)
+        if not a:
             return True
-        a = list(s)
-        for i in t:
-            if i == a[0]:
-                a.pop(0)
-            if not a:
-                return True
-        return False
+    return False
+    
+def findMaxAverage(self, nums, k):
+    """
+    :type nums: List[int]
+    :type k: int
+    :rtype: float
+    """
+    high = sum(nums[:k])
+    curr = high
+    for i in range(1,len(nums)-k+1):
+        curr -= nums[i-1]
+        curr += nums[i-1+k]
+        high = max(high, curr)
+    return float(high) / k
+
+def maxVowels(self, s, k):
+    """
+    :type s: str
+    :type k: int
+    :rtype: int
+    """
+    vowel = ['a', 'e', 'i', 'o', 'u'] 
+    high = len(list(filter(lambda x : x.lower() in vowel, list(s[0:k]))))
+    curr = high
+    for i in range(1,len(s)-k+1):
+        if s[i-1] in vowel:
+            curr -= 1
+        if s[i-1+k] in vowel:
+            curr += 1
+        high = max(high, curr)
+    return high

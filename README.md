@@ -57,3 +57,6 @@
 - 443. String Compression
 - 283. Move Zeroes
 - 392. Is Subsequence
+- 643. Maximum Average Subarray I
+- 1456. Maximum Number of Vowels in a Substring of Given Length
+
