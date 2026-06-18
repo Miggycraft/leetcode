@@ -564,3 +564,68 @@ def reverseWords(self, s):
     :rtype: str
     """
     return " ".join(s.split()[::-1])
+
+def compress(self, chars):
+    """
+    :type chars: List[str]
+    :rtype: int
+    """
+    o = ""
+    count = 1
+    last_l = chars[0]
+    for i in chars[1:]:
+        if i == last_l:
+            count += 1
+        else:
+            if count == 1:
+                o += last_l
+            else:
+                o += last_l + str(count)
+            last_l = i
+            count = 1
+    
+    if count == 1:
+        o += last_l
+    else:
+        o += last_l + str(count)
+    chars[:] = list(o)
+    return len(o)
+
+def moveZeroes(self, nums):
+    """
+    :type nums: List[int]
+    :rtype: None Do not return anything, modify nums in-place instead.
+    """
+    if len(nums) == 1:
+        return nums
+    l_p = 0
+    r_p = 1
+    while l_p < len(nums):
+        if nums[l_p] != 0:
+            l_p += 1
+            r_p += 1
+        if r_p > len(nums)-1:
+            l_p += 1
+            r_p = l_p + 1
+        elif nums[l_p] == 0 and nums[r_p] != 0:
+            nums[l_p], nums[r_p] = nums[r_p], nums[l_p]
+            l_p += 1
+            r_p += 1
+        else:
+            r_p += 1
+
+    def isSubsequence(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: bool
+        """
+        if not s:
+            return True
+        a = list(s)
+        for i in t:
+            if i == a[0]:
+                a.pop(0)
+            if not a:
+                return True
+        return False
