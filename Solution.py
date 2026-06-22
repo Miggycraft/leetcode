@@ -660,3 +660,27 @@ def maxVowels(self, s, k):
             curr += 1
         high = max(high, curr)
     return high
+
+def largestAltitude(self, gain):
+    """
+    :type gain: List[int]
+    :rtype: int
+    """
+    m = 0
+    curr = 0
+    for i in gain:
+        curr += i
+        m = max(m, curr)
+    return m
+
+def pivotIndex(self, nums):
+    """
+    :type nums: List[int]
+    :rtype: int
+    """
+    for i in range(len(nums)):
+        left = nums[0:i]
+        right = nums[i+1:len(nums)]
+        if sum(left) == sum(right):
+            return i
+    return -1

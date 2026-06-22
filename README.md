@@ -60,3 +60,6 @@
 - 643. Maximum Average Subarray I
 - 1456. Maximum Number of Vowels in a Substring of Given Length
 
+## 6/22/26
+- 1732. Find the Highest Altitude
+- 724. Find Pivot Index (need optimize)
